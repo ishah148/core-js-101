@@ -114,6 +114,7 @@ describe('03-arrays-tasks', () => {
       const actual = tasks.getArrayOfStrings(data.arr);
       assert.deepEqual(
         data.expected,
+        // eslint-disable-next-line linebreak-style
         actual,
       );
     });

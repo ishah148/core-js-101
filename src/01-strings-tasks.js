@@ -1,3 +1,8 @@
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable space-before-blocks */
+/* eslint-disable no-empty */
+/* eslint-disable no-plusplus */
+/* eslint-disable */
 /* *******************************************************************************************
  *                                                                                           *
  * Please read the following tutorial before implementing tasks:                              *
@@ -139,8 +144,8 @@ function removeFirstOccurrences(str, v) {
  *   '<span>' => 'span'
  *   '<a>' => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  return str.match(/<(\w+)>/)[1];
 }
 
 /**
@@ -153,8 +158,8 @@ function unbracketTag(/* str */) {
  *   'Thunderstruck' => 'THUNDERSTRUCK'
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
-function convertToUpperCase(/* str */) {
-  throw new Error('Not implemented');
+function convertToUpperCase(s) {
+  return s.toUpperCase();
 }
 
 /**
@@ -172,8 +177,8 @@ function convertToUpperCase(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  return str.split(';');
 }
 
 /**
@@ -199,10 +204,23 @@ function extractEmails(/* str */) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleString(w, h) {
+  let res = '';
+  for (let i = 1; i <= w; i++) {
+    for (let k = 1; k <= h; k++) {
+      if (i === 1 && k === 1) {
+        res += '┌'
+      }
+      if(k === 1 && i > 1 && i < w.length ) {
+        res+='─';
+      }
+      if(k === 1 )
+    }
+  }
+  res += '\n'
+  console.log(res)
 }
-
+getRectangleString(6, 4);
 /**
  * Encode specified string with ROT13 cipher
  * See details:  https://en.wikipedia.org/wiki/ROT13

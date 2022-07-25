@@ -8,7 +8,6 @@
  *                                                                                            *
  ******************************************************************************************** */
 
-const { getStringLength } = require("./01-strings-tasks");
 
 /**
  * Returns an index of the specified element in array or -1 if element is not found

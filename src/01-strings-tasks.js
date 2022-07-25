@@ -204,23 +204,16 @@ function extractEmails(str) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(w, h) {
-  let res = '';
-  for (let i = 1; i <= w; i++) {
-    for (let k = 1; k <= h; k++) {
-      if (i === 1 && k === 1) {
-        res += '┌'
-      }
-      if(k === 1 && i > 1 && i < w.length ) {
-        res+='─';
-      }
-      if(k === 1 )
+ function getRectangleString(w, h) {
+  const lines = [`┌${'─'.repeat(w - 2)}┐`];
+  if (h > 2) {
+    for (let line = 0; line < h - 2; line += 1) {
+      lines.push(`│${' '.repeat(w - 2)}│`);
     }
   }
-  res += '\n'
-  console.log(res)
+  lines.push(`└${'─'.repeat(w - 2)}┘`);
+  return `${lines.join('\n')}\n`;
 }
-getRectangleString(6, 4);
 /**
  * Encode specified string with ROT13 cipher
  * See details:  https://en.wikipedia.org/wiki/ROT13
@@ -237,8 +230,13 @@ getRectangleString(6, 4);
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+ function encodeToRot13(str) {
+  const encoded = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+  const coded = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'.split('');
+  return str.split('').map((item) => {
+    if (!item.match(/[ !,.?]/g)) return coded[encoded.indexOf(`${item}`)];
+    return item;
+  }).join('');
 }
 
 /**
